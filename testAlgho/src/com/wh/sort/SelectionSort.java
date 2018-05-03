@@ -15,54 +15,49 @@ import com.wh.utilities.Utilities;
  * O(n^2); you go through the array twice, the original and the sorted
  *
  */
-public class InsertionSort {
+public class SelectionSort {
 
 	final static int _CONSTLARGE = 1000000;
 	//int[] sortArray = new int[large];
 	private ArrayList<Integer> sortArrayList;
 	private ArrayList<Integer> middleArrayList;
 	
-	public InsertionSort(ArrayList<Integer> ranArray, int large){
+	public SelectionSort(ArrayList<Integer> ranArray, int large){
 		
 		middleArrayList = new ArrayList<>();
 		sortArrayList = new ArrayList<>();
 		sortArrayList.add(ranArray.get(0));
+		int min, pos=0;
+		
 		System.out.println("");
-		System.out.print(" Inicio InsertionSort:" + LocalDate.now() + " " + LocalTime.now());
-		for(int i=1; i < ranArray.size(); i++ )
+		System.out.print(" Inicio SelectionSort:" + LocalDate.now() + " " + LocalTime.now());
+		
+		for(int i=0; i < ranArray.size(); i++ )
 		{
-			int j = 0;
-			boolean b = true;
-			while( j < sortArrayList.size() && b)
+			min = ranArray.get(i);
+			for(int j=i+1; j < ranArray.size(); j++ )
 			{
-				if(ranArray.get(i) < sortArrayList.get(j))
+				if(ranArray.get(j) < min)
 				{
-
-					sortArrayList.add(j, ranArray.get(i));
-					b = false;
+					min = ranArray.get(j);
+					pos = j;
 				}
-				else
-				{
-					if(j == sortArrayList.size()-1)
-					{
-						sortArrayList.add(ranArray.get(i));
-						b = false;
-					}
-				}
-				j++;
 			}
-				
+			
+			ranArray.set(pos, ranArray.get(i));
+			ranArray.set(i,min); 
+			
 		}
 		//Utilities.ShowArrayList(sortArrayList);
 		System.out.println("");
-		System.out.println(" Fin InsertionSort:" + LocalDate.now() + " " + LocalTime.now());
+		System.out.println(" Fin SelectionSort:" + LocalDate.now() + " " + LocalTime.now());
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		
-		new InsertionSort(Utilities.RandomArrayList(_CONSTLARGE),_CONSTLARGE);
+		new SelectionSort(Utilities.RandomArrayList(_CONSTLARGE),_CONSTLARGE);
 	}
 	
 	
