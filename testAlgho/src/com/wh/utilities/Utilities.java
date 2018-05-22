@@ -1,5 +1,8 @@
 package com.wh.utilities;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 public class Utilities {
@@ -38,8 +41,19 @@ public class Utilities {
 			
 			System.out.print(" "+ values + " ");
 		}
-			
-		
 	}
 	
+	public static String startLog(String algho, LocalTime start) {
+		
+		return " Inicio " + algho + ": " + LocalDate.now() + " " + start.toString();
+	}
+	
+	public static String endsLog(String algho, LocalTime start, LocalTime end) {
+		
+		System.out.println(" Fin    " + algho + ": "+ LocalDate.now() + " " + end);
+		Duration duration = Duration.between(start, end);
+	    return System.out.printf(" Seconds between %s and %s is: %s seconds.%n",
+	                start, end, duration.getSeconds()).toString();
+		
+	}
 }

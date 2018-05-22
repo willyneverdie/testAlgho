@@ -1,5 +1,6 @@
 package com.wh.sort;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -10,27 +11,31 @@ import com.wh.utilities.Utilities;
 
 
 /**
- * @author williams
- * n is the size of the list
- * O(n^2); you go through the array twice, the original and the sorted
+ * @author williams herrera
+ * n is the size of the arrayList
+ * O(n^2); you go through the array twice, the original and the sorted one
  *
  */
 public class SelectionSort {
 
-	final static int _CONSTLARGE = 1000000;
-	//int[] sortArray = new int[large];
-	private ArrayList<Integer> sortArrayList;
-	private ArrayList<Integer> middleArrayList;
+	final static int _N = 1000000;
+	final static String _ALGO_NAME = "SelectionSort";
 	
-	public SelectionSort(ArrayList<Integer> ranArray, int large){
+	
+	private ArrayList<Integer> sortArrayList;
+	private LocalTime lt;
+	
+	public SelectionSort(ArrayList<Integer> ranArray, int large, boolean logDebug){
 		
-		middleArrayList = new ArrayList<>();
 		sortArrayList = new ArrayList<>();
 		sortArrayList.add(ranArray.get(0));
 		int min, pos=0;
 		
-		System.out.println("");
-		System.out.print(" Inicio SelectionSort:" + LocalDate.now() + " " + LocalTime.now());
+		if(logDebug) {
+			
+			System.out.println(Utilities.startLog(_ALGO_NAME, lt = LocalTime.now()));
+		}
+		
 		
 		for(int i=0; i < ranArray.size(); i++ )
 		{
@@ -48,16 +53,17 @@ public class SelectionSort {
 			ranArray.set(i,min); 
 			
 		}
-		//Utilities.ShowArrayList(sortArrayList);
-		System.out.println("");
-		System.out.println(" Fin SelectionSort:" + LocalDate.now() + " " + LocalTime.now());
+		
+		if(logDebug) {
+			Utilities.endsLog(_ALGO_NAME , lt, LocalTime.now());
+		}
+		
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		
-		new SelectionSort(Utilities.RandomArrayList(_CONSTLARGE),_CONSTLARGE);
+		new SelectionSort(Utilities.RandomArrayList(_N),_N, true);
 	}
 	
 	
