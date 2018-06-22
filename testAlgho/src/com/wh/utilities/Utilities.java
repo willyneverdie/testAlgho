@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Utilities {
 
@@ -13,10 +14,12 @@ public class Utilities {
 	public static int[] RandomArray(int num)
 	{
 		int[] randomarray = new int[num];
+		Random ran = new Random();
 		
 		for(int i = 0; i< num; i++)
 		{
-			randomarray[i] = (int) Math.random();
+			randomarray[i] = ran.nextInt(num);
+			//randomarray[i] = (int) Math.random();
 		}
 		
 		return randomarray;
