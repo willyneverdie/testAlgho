@@ -6,7 +6,7 @@ import com.wh.utilities.Utilities;
 
 public class MergeSort {
 
-	private static int _CONSTLARGE = 1000;
+	private static int _CONSTLARGE = 100;
 	final static String _ALGO_NAME = "SelectionSort";
 	private int[] randomArray;
 	private int[] sortArray;
