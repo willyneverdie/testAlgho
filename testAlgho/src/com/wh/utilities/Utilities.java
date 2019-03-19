@@ -59,4 +59,27 @@ public class Utilities {
 	                start, end, duration.getSeconds()).toString();
 		
 	}
+
+	public static char[] CharRandomArray(int num) {
+		
+		char[] randomarray = new char[num];
+		Random ran = new Random();
+		int random = 0;
+		char str;
+		
+		for(int i = 0; i< num; i++)
+		{
+			random = ran.nextInt(91);
+			
+			if(random >=65 && random <= 90 ) {
+				
+				str = (char) random;
+				randomarray[i] = str;
+			}else
+				i--;
+		}
+		
+		return randomarray;
+		
+	}
 }
