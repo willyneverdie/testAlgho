@@ -6,7 +6,7 @@ import com.wh.utilities.Utilities;
  * 
  * @author williams
  * 
- * We reverse an char array using and in-place algorithm.
+ * We reverse a char array using and in-place algorithm.
  * In-place means that we don't use another data structures to solve the reverse problem.
  * This algorithm takes O(n/2) time because we loop through half the array. Linear grow.
  * We are not considering the creation of the array 
@@ -24,7 +24,7 @@ public class ReverseInPlace {
 
 	public char[] run() {
 		
-		//System.out.println(reverseStr);
+		System.out.println(reverseStr);
 		for(int i=0;i < reverseStr.length / 2; i++) {
 			temp = reverseStr[i];
 			reverseStr[i] = reverseStr[ reverseStr.length - i - 1];
@@ -42,9 +42,9 @@ public class ReverseInPlace {
 	    long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
 	    System.out.println("Used Memory before:" + (long) usedMemoryBefore);		
 		
-		ReverseInPlace rip = new ReverseInPlace(Utilities.CharRandomArray(1000000000));
-		//System.out.println(rip.run());
-		rip.run();
+		ReverseInPlace rip = new ReverseInPlace(Utilities.CharRandomArray(13));
+		System.out.println(rip.run());
+		//rip.run();
 		
 		long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
 	    System.out.println("Memory increased:" + (usedMemoryAfter-usedMemoryBefore));
