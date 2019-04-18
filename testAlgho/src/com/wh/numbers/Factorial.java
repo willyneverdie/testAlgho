@@ -10,16 +10,17 @@ package com.wh.numbers;
 
 public class Factorial {
 
+	public static int count;
 	
 	public static void main(String[] args) {
 				
-		System.out.println(Factorial.calculate(20));
+		System.out.println(Factorial.calculate(5));
 		
 	}
 
 
 	private static int calculate(int number) {
-		
+		System.out.println("Iteration:"+count++);
 		if(number == 0)
 			return 1;
 		else
