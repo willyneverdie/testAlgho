@@ -1,14 +1,16 @@
 package com.wh.trees;
 
-public class Node {
+import java.util.Comparator;
+
+public class Node<T extends Number & Comparable<? super T>> {
 	
-	char value;
-	Node parentNode;
-	Node leftNode;
-	Node rightNode;
+	public T value;
+	Node<T> parentNode;
+	public Node<T> leftNode;
+	public Node<T> rightNode;
 	
 	
-	public Node(char value, Node parent, Node leftNode, Node rightNode) {
+	public Node(T value, Node<T> parent, Node<T> leftNode, Node<T> rightNode) {
 		super();
 		this.value = value;
 		this.parentNode = parent;
@@ -16,25 +18,67 @@ public class Node {
 		this.rightNode = rightNode;
 	}
 
-	//Getters
-	public char getValue() { return value;}
 
-	public Node getParentNode() {return parentNode;}
+
+	public T getValue() {
+		return value;
+	}
+
+
+
+	public void setValue(T value) {
+		this.value = value;
+	}
+
+
+
+	public Node<T> getParentNode() {
+		return parentNode;
+	}
+
+
+
+	public void setParentNode(Node<T> parentNode) {
+		this.parentNode = parentNode;
+	}
+
+
+
+	public Node<T> getLeftNode() {
+		return leftNode;
+	}
+
+
+
+	public void setLeftNode(Node<T> leftNode) {
+		this.leftNode = leftNode;
+	}
+
+
+
+	public Node<T> getRightNode() {
+		return rightNode;
+	}
+
+
+
+	public void setRightNode(Node<T> rightNode) {
+		this.rightNode = rightNode;
+	}
+
+
+
 	
-	public Node getLeftNode() {	return leftNode;}
 
-	public Node getRightNode() {return rightNode;}
 
 	
-	//Setter
-	public void setValue(char value) {	this.value = value;	}
 
-	public void setParentNode(Node parentNode) {this.parentNode = parentNode;}
 
-	public void setLeftNode(Node leftNode) {this.leftNode = leftNode;}
 
-	public void setRightNode(Node rightNode) {	this.rightNode = rightNode;	}
 	
+
+
+
 
 	
 	

@@ -8,7 +8,7 @@ import com.wh.utilities.Utilities;
 
 public class QuickSort {
 
-	private static int _CONSTLARGE = 20;
+	private static int _CONSTLARGE = 1000000000;
 	final static String _ALGO_NAME = "QuickSort";
 	private int[] randomArray;
 	private int[] sortArray;

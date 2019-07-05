@@ -6,11 +6,13 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.wh.trees.Node;
+
 public class Utilities {
 
 	private static ArrayList<Integer> randomArrayList;
 	private static Random random = new Random();
-	
+	static final int COUNT = 10;
 	
 	
 	public static int[] RandomArray(int num)
@@ -173,4 +175,36 @@ public class Utilities {
 		}
 		return validacion;
 	}
+	
+	static void print2DUtil(Node root, int space)  
+	{  
+	    // Base case  
+	    if (root == null)  
+	        return;  
+	  
+	    // Increase distance between levels  
+	    space += COUNT;  
+	  
+	    // Process right child first  
+	    print2DUtil(root.rightNode, space);  
+	  
+	    // Print current node after space  
+	    // count  
+	    System.out.print("\n");  
+	    for (int i = COUNT; i < space; i++)  
+	        System.out.print(" ");  
+	    System.out.print(root.value + "\n");  
+	  
+	    // Process left child  
+	    print2DUtil(root.leftNode, space);  
+	}  
+	  
+	// Wrapper over print2DUtil()  
+	public static void print2D(Node<? extends Object> root)  
+	{  
+	    // Pass initial space count as 0  
+	    print2DUtil(root, 0);  
+	}
+	
+	
 }
