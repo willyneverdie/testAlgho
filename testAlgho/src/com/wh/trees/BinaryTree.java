@@ -1,6 +1,9 @@
 package com.wh.trees;
 
 import static com.wh.utilities.Utilities.print2D;
+import static com.wh.utilities.Utilities.printInOrder;
+import static com.wh.utilities.Utilities.printPreOrder;
+import static com.wh.utilities.Utilities.printPostOrder;
 
 public class BinaryTree {
 
@@ -38,13 +41,18 @@ public class BinaryTree {
 			if(node.value < root.value) {
 				if(root.leftNode != null)
 					insert(root.leftNode, node);
-				else
+				else {
 					root.leftNode = node;
+					root.leftNode.setParentNode(root);
+				}
 			}else
 				if(root.rightNode != null)
 					insert(root.rightNode,node);
-				else
+				else {
 					root.rightNode = node;
+					root.rightNode.setParentNode(root);
+				}
+					
 		}
 	}
 	
@@ -63,20 +71,26 @@ public class BinaryTree {
 
 	public static void main(String[] args) {
 			
-		BinaryTree bt = new BinaryTree(new Node<Integer>(5, null, null, null));
+		BinaryTree bt = new BinaryTree(new Node<Integer>(13, null, null, null));
 		
-		bt.insert(bt.getRoot(), new Node<Integer>(1, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(10, null, null, null));
 		bt.insert(bt.getRoot(), new Node<Integer>(7, null, null, null));
 		bt.insert(bt.getRoot(), new Node<Integer>(9, null, null, null));
 		bt.insert(bt.getRoot(), new Node<Integer>(2, null, null, null));
 		bt.insert(bt.getRoot(), new Node<Integer>(11, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(3, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(4, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(6, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(8, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(33, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(48, null, null, null));
+		//bt.insert(bt.getRoot(), new Node<Integer>(1, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(31, null, null, null));
 		
 		print2D(bt.root);
 		System.out.println(bt.search(bt.root, new Node<Integer>(4, null, null, null)));
+		
+		printInOrder(bt.root);
+		System.out.println();
+		printPreOrder(bt.root);
+		System.out.println();
+		printPostOrder(bt.root);
 		
 	}
 

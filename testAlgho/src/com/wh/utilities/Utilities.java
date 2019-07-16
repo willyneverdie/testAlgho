@@ -6,6 +6,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.wh.trees.BinaryTree;
 import com.wh.trees.Node;
 
 public class Utilities {
@@ -206,5 +207,44 @@ public class Utilities {
 	    print2DUtil(root, 0);  
 	}
 	
+	// (Left, Root, Right)
+	public static void printInOrder(Node rootNode){
+		
+		if(rootNode != null) {
+			printInOrder(rootNode.leftNode);
+			
+			System.out.print(rootNode.getValue());
+						
+			printInOrder(rootNode.rightNode);
+
+		}		
+	}
+	
+	//  (Root, Left, Right)
+		public static void printPreOrder(Node rootNode){
+			
+			if(rootNode != null) {
+				System.out.print(rootNode.getValue());
+				
+				printPreOrder(rootNode.leftNode);
+							
+				printPreOrder(rootNode.rightNode);
+			}
+		}
+
+		//   Left, Right, Root
+		public static void printPostOrder(Node rootNode){
+			
+			if(rootNode != null) {
+				
+				printPostOrder(rootNode.leftNode);
+				
+				printPostOrder(rootNode.rightNode);
+				
+				System.out.print(rootNode.getValue());
+				
+				
+			}
+		}
 	
 }
