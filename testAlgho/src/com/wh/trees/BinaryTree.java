@@ -2,8 +2,8 @@ package com.wh.trees;
 
 import static com.wh.utilities.Utilities.print2D;
 import static com.wh.utilities.Utilities.printInOrder;
-import static com.wh.utilities.Utilities.printPreOrder;
 import static com.wh.utilities.Utilities.printPostOrder;
+import static com.wh.utilities.Utilities.printPreOrder;
 
 public class BinaryTree {
 
@@ -14,6 +14,17 @@ public class BinaryTree {
 		this.root = root;
 	}
 
+	//Runtime: O(n) : n is the number of nodes
+	//We need to count every node
+	//Space: O(n): the size of the stack is the amount of the node
+	public int height(Node<Integer> n) {
+		if(n == null)
+			return -1;
+		else {
+			return 1 + Math.max(height(n.leftNode), height(n.rightNode));
+		}
+	}
+	
 	public boolean search(Node<Integer> root, Node<Integer> node) {
 		if(root != null) {
 			System.out.println(root.value + " " + node.value);
@@ -27,12 +38,8 @@ public class BinaryTree {
 			}
 			else
 				return search(root.rightNode, node);
-			
 		}
-		return false;
-
-		
-		
+		return false;		
 	}
 	
 	
@@ -51,8 +58,7 @@ public class BinaryTree {
 				else {
 					root.rightNode = node;
 					root.rightNode.setParentNode(root);
-				}
-					
+				}			
 		}
 	}
 	
@@ -91,6 +97,8 @@ public class BinaryTree {
 		printPreOrder(bt.root);
 		System.out.println();
 		printPostOrder(bt.root);
+		System.out.println();
+		System.out.println("Height:"+bt.height(bt.root));
 		
 	}
 

@@ -28,7 +28,9 @@ public class QuickSort {
 		System.out.println("");
 		System.out.print(" Inicio QuickSort:" + LocalDate.now() + " " + LocalTime.now());
 		QuickSortImpl(randomArray, 0, randomArray.length - 1);
+		
 		System.out.println("");
+		System.out.println(Arrays.toString(randomArray));
 		System.out.println(" Fin    QuickSort:" + LocalDate.now() + " " + LocalTime.now());
 	}
 	
@@ -97,7 +99,8 @@ public class QuickSort {
 
 	public static void main(String[] args) {
 
-		QuickSort ms = new QuickSort(Utilities.RandomArray(_CONSTLARGE));
+		//QuickSort ms = new QuickSort(Utilities.RandomArray(_CONSTLARGE));
+		QuickSort ms = new QuickSort(new int[]{5,8,1,4,9,2});
 		ms.run();
 	}
 
