@@ -4,7 +4,9 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 import com.wh.trees.BinaryTree;
 import com.wh.trees.Node;
@@ -14,6 +16,31 @@ public class Utilities {
 	private static ArrayList<Integer> randomArrayList;
 	private static Random random = new Random();
 	static final int COUNT = 10;
+	
+	
+	
+	
+	public static int[] RandomUniqueArray(int num)
+	{
+		Set<Integer> s = new HashSet<Integer>();
+		int[] randomarray = new int[num];
+		Random ran = new Random();
+		
+		int i = num;
+		int value = 0;
+		while(i>0) {
+			
+				value = ran.nextInt(num);
+				if(s.add(value)) {
+					i--;
+					randomarray[i] =value;
+				}
+				 
+				
+		}
+		return randomarray;
+	}
+	
 	
 	
 	public static int[] RandomArray(int num)

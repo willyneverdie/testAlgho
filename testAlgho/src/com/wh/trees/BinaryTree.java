@@ -16,7 +16,7 @@ public class BinaryTree {
 
 	//Runtime: O(n) : n is the number of nodes
 	//We need to count every node
-	//Space: O(n): the size of the stack is the amount of the node
+	//Space: O(n): the size of the stack is the amount of nodes
 	public int height(Node<Integer> n) {
 		if(n == null)
 			return -1;
