@@ -11,6 +11,17 @@ package com.wh.heap;
  *  parent(i) = i / 2
  *  left (i) = 2i
  *  right(i) = 2i+1
+ *  
+ * if i=0
+ * parent(i) = (index-1)/2
+ * left (i) = index*2+1
+ * right(i) = index*2+2
+ *
+ * 0  --->0, 1, 2
+ * | \
+ * 1  2   ---> 0, 3, 4 ---> 0, 5, 6
+ * |\  |\
+ * 3 4 5 6
  */
 public interface MaxHeapI {
 

@@ -76,7 +76,12 @@ public class MaxHeapImpl implements MaxHeapI{
 		return 2 * pos;
 	}
 
-	
+	/*
+	 * If we assume zero-based array, then the Equation are the following:
+	 * private int RightChildPos(int pos) { return 2 * pos + 2; }
+	 * 
+	 * private int LeftChildPos(int pos) { return 2 * pos + 1; }
+	 */	
 		
     
     private static void swap(int[] Heap, int fpos, int spos) 
