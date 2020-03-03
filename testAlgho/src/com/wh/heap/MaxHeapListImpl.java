@@ -52,8 +52,8 @@ public class MaxHeapListImpl implements MaxHeapI{
 	 */
 	@Override
 	public List<Integer> BuildMaxHeap() {
-		
-		for (int i = (heap.size()/2)-1; i>0 ; i--) {
+		//System.out.println("size:"+heap.size()/2);
+		for (int i = (heap.size()/2)-1; i>=0 ; i--) { //if starting from 0, use heap.size()/2)-1 
 			Max_Heapify(i);
 		}
 		return heap;
@@ -63,19 +63,19 @@ public class MaxHeapListImpl implements MaxHeapI{
 			
 		// 11/2 = 5, position 5
 		
-		if(pos >= ((heap.size() - 1)/2) + 1)
+		if(pos >= ((heap.size() - 1)/2) ) //add +1 if starting from position 1 
 				return true;
 			else
 				return false;
 	}
 
-	private int RightChildPos(int pos) {
-		return 2 * pos +1;
-	}
-
-	private int LeftChildPos(int pos) {
-		return 2 * pos;
-	}
+//	private int RightChildPos(int pos) {
+//		return 2 * pos +1;
+//	}
+//
+//	private int LeftChildPos(int pos) {
+//		return 2 * pos;
+//	}
 
 	/*
 	 * If we assume zero-based array, then the Equation are the following:
@@ -83,8 +83,9 @@ public class MaxHeapListImpl implements MaxHeapI{
 	 * 
 	 * private int LeftChildPos(int pos) { return 2 * pos + 1; }
 	 */	
-		
-    
+	private int RightChildPos(int pos) { return 2 * pos + 2; }
+	private int LeftChildPos(int pos) { return 2 * pos + 1; }
+	
     private static void swap(List<Integer> Heap, int fpos, int spos) 
     { 
         int tmp; 
@@ -100,20 +101,24 @@ public class MaxHeapListImpl implements MaxHeapI{
 		
 	
 		//Create arrayList with size 16
-		MaxHeapListImpl Heap = new MaxHeapListImpl(Utilities.RandomUniqueArrayList(16));
+		MaxHeapListImpl Heap = new MaxHeapListImpl(Utilities.RandomUniqueArrayList(15));
 		
-		com.wh.utilities.Utilities.ShowArrayList(Heap.getHeap());
+		//Show initial arrayList
+		Utilities.ShowArrayList(Heap.getHeap());
 		System.out.println();
-		printArrayListAsTree(Heap.getHeap(), 1, 0);
-		
+		printArrayListAsTree(Heap.getHeap(), 0, 0);
 		System.out.println();
 		
+		//Create Max-Heap
 		Heap.BuildMaxHeap();
-		com.wh.utilities.Utilities.ShowArrayList(Heap.getHeap());
+		Utilities.ShowArrayList(Heap.getHeap());
 		System.out.println();
-		printArrayListAsTree(Heap.getHeap(), 1, 0);
-		//printArrayAsTree(arr2, 1, 0);
-		
+		printArrayListAsTree(Heap.getHeap(), 0, 0);
+
+		//Extract-Max
+		System.out.println();
+		System.out.println("Max is "+ Heap.extractmax());
+		printArrayListAsTree(Heap.getHeap(), 0, 0);
 		
 		//  parent(i) = i / 2
 		//  left (i) = 2i
@@ -133,7 +138,7 @@ public class MaxHeapListImpl implements MaxHeapI{
 		//print arr from index to 2^(level)
 		//printTree(int[] arr, i, level+1)
 		//until? end of array
-int i=0;
+		int i=0;
 		
 		if(index < arr.length) {
 			
@@ -190,10 +195,20 @@ int i=0;
 		return false;
 	}
 
+	
+	/*
+	 * extractmax() takes in the worse case log(n) time due to Max_Heapify call 
+	 * O() = O(log n)
+	 */
 	@Override
 	public int extractmax() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int max = this.heap.get(0);
+		int last = this.heap.get(this.heap.size() - 1);
+		this.heap.remove(this.heap.size() - 1);
+		this.heap.set(0, last);
+		Max_Heapify(0);
+		return max;
 	}
 
 	@Override
@@ -204,7 +219,6 @@ int i=0;
 
 	@Override
 	public int getMax() {
-		
 		return this.heap.get(0);
 	}
 
