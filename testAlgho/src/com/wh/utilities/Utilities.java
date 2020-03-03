@@ -1,5 +1,6 @@
 package com.wh.utilities;
 
+import java.util.List;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,7 +9,6 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.wh.trees.BinaryTree;
 import com.wh.trees.Node;
 
 public class Utilities {
@@ -57,6 +57,27 @@ public class Utilities {
 		return randomarray;
 	}
 	
+	
+	public static List<Integer> RandomUniqueArrayList(int num)
+	{
+		Set<Integer> s = new HashSet<Integer>();
+		List<Integer> randomarraylist = new ArrayList<>();
+		Random ran = new Random();
+		
+		int i = num;
+		int value = 0;
+		while(i>0) {
+			
+				value = ran.nextInt(num);
+				if(s.add(value)) {
+					i--;
+					randomarraylist.add(value); //[i] =value;
+				}
+				 
+		}
+		return randomarraylist;
+	}
+	
 	public static ArrayList<Integer> RandomArrayList(int num)
 	{
 		randomArrayList = new ArrayList<>();
@@ -70,7 +91,7 @@ public class Utilities {
 		return randomArrayList;
 	}
 	
-	public static void ShowArrayList(ArrayList<Integer> intArrayList){
+	public static void ShowArrayList(List<Integer> intArrayList){
 		System.out.println("");
 		for(int values : intArrayList){
 			

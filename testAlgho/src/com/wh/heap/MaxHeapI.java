@@ -1,4 +1,7 @@
 package com.wh.heap;
+
+import java.util.List;
+
 /**
  * 
  * @author williams
@@ -35,7 +38,12 @@ public interface MaxHeapI {
 	 * build max heap
 	 * @param: int[] arr
 	 */
-	public int[] BuildMaxHeap();
+	public List<Integer> BuildMaxHeap();
 	
+	public boolean insert(int priority);
+	public boolean delete();
+	public int extractmax();
+	public int getMax();
+	public int decreaseKey();
 	
 }

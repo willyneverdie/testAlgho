@@ -1,25 +1,23 @@
 package com.wh.heap;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.wh.utilities.Utilities;
 
-public class MaxHeapImpl implements MaxHeapI{
+public class MaxHeapListImpl implements MaxHeapI{
 
-	int[] heap;
+	List<Integer> heap;
 	
-	public MaxHeapImpl(int[] heap) {
+	public MaxHeapListImpl(List<Integer> heap) {
 		super();
 		this.heap = heap;
 	}
-	
-	public int[] getHeap() {
+
+	public List<Integer> getHeap() {
 		return heap;
 	}
 
-
-	public void setHeap(int[] heap) {
+	public void setHeap(List<Integer> heap) {
 		this.heap = heap;
 	}
 
@@ -32,18 +30,18 @@ public class MaxHeapImpl implements MaxHeapI{
 	
 		if(IsLeaf(pos)) return;
 		
-		int value = heap[pos];
+		int value = heap.get(pos);
 		int left =  LeftChildPos(pos); // return left child position
 		int right = RightChildPos(pos);// return right child position
 		int largestPos = 0; // store position with the largest value
 		
 		//System.out.println(left + "" + right+"");
-		if(heap[left] > heap[right])
+		if(heap.get(left) > heap.get(right))
 			largestPos = left;
-		if (heap[right] > heap[left])
+		if (heap.get(right) > heap.get(left))
 			largestPos = right;
 		
-		if(heap[largestPos] > value) {
+		if(heap.get(largestPos) > value) {
 				swap(heap, pos, largestPos);
 				Max_Heapify(largestPos);
 		}
@@ -53,9 +51,9 @@ public class MaxHeapImpl implements MaxHeapI{
 	 * O(n) = O(n log n), since you call BuildMaxHeap n/2 times.
 	 */
 	@Override
-	public int[] BuildMaxHeap() {
+	public List<Integer> BuildMaxHeap() {
 		
-		for (int i = heap.length/2-1; i>0 ; i--) {
+		for (int i = (heap.size()/2)-1; i>0 ; i--) {
 			Max_Heapify(i);
 		}
 		return heap;
@@ -65,7 +63,7 @@ public class MaxHeapImpl implements MaxHeapI{
 			
 		// 11/2 = 5, position 5
 		
-		if(pos >= ((heap.length - 1)/2) + 1)
+		if(pos >= ((heap.size() - 1)/2) + 1)
 				return true;
 			else
 				return false;
@@ -87,12 +85,12 @@ public class MaxHeapImpl implements MaxHeapI{
 	 */	
 		
     
-    private static void swap(int[] Heap, int fpos, int spos) 
+    private static void swap(List<Integer> Heap, int fpos, int spos) 
     { 
         int tmp; 
-        tmp = Heap[fpos]; 
-        Heap[fpos] = Heap[spos]; 
-        Heap[spos] = tmp; 
+        tmp = Heap.get(fpos); 
+        Heap.set(fpos, Heap.get(spos));//[fpos] = Heap[spos]; 
+        Heap.set(spos, tmp);//[spos] = tmp; 
     } 
     
 	
@@ -100,31 +98,21 @@ public class MaxHeapImpl implements MaxHeapI{
 	
 	public static void main(String[] args) {
 		
-		List h = new ArrayList<Integer>();
-		h.add(1);
-		h.add(2);
-		h.add(3);
+	
+		//Create arrayList with size 16
+		MaxHeapListImpl Heap = new MaxHeapListImpl(Utilities.RandomUniqueArrayList(16));
 		
-		h.forEach((a) -> System.out.println(a));
-		h.remove(0);
-		h.forEach((a) -> System.out.println(a));
-		
-		MaxHeapImpl Heap = new MaxHeapImpl(Utilities.RandomUniqueArray(16));
-		//int[] arr = Utilities.RandomArray(16);
-		
-		for(int i=1;i<Heap.getHeap().length;i++)
-			System.out.print(Heap.getHeap()[i]);
+		com.wh.utilities.Utilities.ShowArrayList(Heap.getHeap());
 		System.out.println();
-		printArrayAsTree(Heap.getHeap(), 1, 0);
+		printArrayListAsTree(Heap.getHeap(), 1, 0);
 		
 		System.out.println();
 		
-		int[] arr2 = Heap.BuildMaxHeap();
-		for (int i = 1; i < arr2.length; i++) {
-			System.out.print(arr2[i]);
-		}
+		Heap.BuildMaxHeap();
+		com.wh.utilities.Utilities.ShowArrayList(Heap.getHeap());
 		System.out.println();
-		printArrayAsTree(arr2, 1, 0);
+		printArrayListAsTree(Heap.getHeap(), 1, 0);
+		//printArrayAsTree(arr2, 1, 0);
 		
 		
 		//  parent(i) = i / 2
@@ -165,6 +153,59 @@ int i=0;
 				printArrayAsTree(arr, i, level+1);
 			}
 		}
+	}
+
+	static void  printArrayListAsTree(List<Integer> arr, int index, int level) {
+
+		int i=0;
+		if(index < arr.size()) {
+			
+			if(Math.pow(2, level) == 1) {
+				System.out.println(arr.get(index));
+				index=index+1;
+				level=level+1;
+				printArrayListAsTree(arr, index, level);
+			}
+			else {
+
+				for(i=index; i< index+Math.pow(2, level);i++) {
+					if(i<arr.size())
+						System.out.print(arr.get(i) + " ");	
+				}
+				System.out.println("");
+				printArrayListAsTree(arr, i, level+1);
+			}
+		}
+	}
+	
+	@Override
+	public boolean insert(int priority) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int extractmax() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int decreaseKey() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getMax() {
+		
+		return this.heap.get(0);
 	}
 
 
