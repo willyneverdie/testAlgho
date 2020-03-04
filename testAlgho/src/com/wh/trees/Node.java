@@ -18,7 +18,10 @@ public class Node<T extends Number & Comparable<? super T>> {
 		this.rightNode = rightNode;
 	}
 
-
+	public Node(T value) {
+		super();
+		this.value = value;
+	}
 
 	public T getValue() {
 		return value;

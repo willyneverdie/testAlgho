@@ -79,27 +79,29 @@ public class BinaryTree {
 			
 		BinaryTree bt = new BinaryTree(new Node<Integer>(13, null, null, null));
 		
-		bt.insert(bt.getRoot(), new Node<Integer>(10, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(7, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(9, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(2, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(11, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(33, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(48, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(10));
+		bt.insert(bt.getRoot(), new Node<Integer>(7));
+		bt.insert(bt.getRoot(), new Node<Integer>(9));
+		bt.insert(bt.getRoot(), new Node<Integer>(2));
+		bt.insert(bt.getRoot(), new Node<Integer>(11));
+		bt.insert(bt.getRoot(), new Node<Integer>(33));
+		bt.insert(bt.getRoot(), new Node<Integer>(48));
 		//bt.insert(bt.getRoot(), new Node<Integer>(1, null, null, null));
-		bt.insert(bt.getRoot(), new Node<Integer>(31, null, null, null));
+		bt.insert(bt.getRoot(), new Node<Integer>(31));
+		bt.insert(bt.getRoot(), new Node<Integer>(4));
 		
 		print2D(bt.root);
-		System.out.println(bt.search(bt.root, new Node<Integer>(4, null, null, null)));
+		//System.out.println(bt.search(bt.root, new Node<Integer>(4, null, null, null)));
 		
-		printInOrder(bt.root);
-		System.out.println();
-		printPreOrder(bt.root);
-		System.out.println();
-		printPostOrder(bt.root);
-		System.out.println();
+		/*
+		 * printInOrder(bt.root); System.out.println(); printPreOrder(bt.root);
+		 * System.out.println(); printPostOrder(bt.root); System.out.println();
+		 */
+		
+		//printInOrder(bt.root);
 		System.out.println("Height:"+bt.height(bt.root));
-		
+		bt.insert(bt.getRoot(), new Node<Integer>(4));
+		print2D(bt.root);
 	}
 
 

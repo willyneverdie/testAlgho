@@ -294,5 +294,53 @@ public class Utilities {
 				
 			}
 		}
+		
+		public static void  printArrayAsTree(int[] arr, int index, int level) {
+			int i=0;
+			
+			if(index < arr.length) {
+				
+				if(Math.pow(2, level) == 1) {
+					System.out.println(arr[index]);
+					index=index+1;
+					level=level+1;
+					printArrayAsTree(arr, index, level);
+				}
+				else {
+
+					for(i=index; i< index+Math.pow(2, level);i++) {
+						if(i<arr.length)
+							System.out.print(arr[i] + " ");	
+					}
+					System.out.println("");
+					printArrayAsTree(arr, i, level+1);
+				}
+			}
+		}
+		
+		public static void  printArrayListAsTree(List<Integer> arr, int index, int level) {
+
+			int i=0;
+			if(index < arr.size()) {
+				
+				if(Math.pow(2, level) == 1) {
+					System.out.println(arr.get(index));
+					index=index+1;
+					level=level+1;
+					printArrayListAsTree(arr, index, level);
+				}
+				else {
+
+					for(i=index; i< index+Math.pow(2, level);i++) {
+						if(i<arr.size())
+							System.out.print(arr.get(i) + " ");	
+					}
+					System.out.println("");
+					printArrayListAsTree(arr, i, level+1);
+				}
+			}
+		}
+
+
 	
 }
