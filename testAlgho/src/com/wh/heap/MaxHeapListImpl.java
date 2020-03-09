@@ -35,7 +35,8 @@ public class MaxHeapListImpl implements MaxHeapI{
 	}
 	
 	/**
-	 * O(n): O(log n) =  the longest path it can take is the height of the tree
+	 * O(n): O(log n) =  from pos the longest path it can take is the height of the tree 
+	 * We assume unique list of integer
 	 */
 	@Override
 	public void Max_Heapify(int pos) {
@@ -69,7 +70,10 @@ public class MaxHeapListImpl implements MaxHeapI{
 	}
 
 	/**
-	 * O(n) = O(n log n), since you call BuildMaxHeap n/2 times.
+	 * O(n) = O(n log n), since you call BuildMaxHeap n/2 times. This is true using simple analysis.
+	 * In a more deep analysis, the sum of work is bounded by a constant. The runtime is (n).
+	 * Reason being the largest amount of nodes are in the leafs, witch we do not consider in the 
+	 * creation of the Heap
 	 */
 	@Override
 	public List<Integer> BuildMaxHeap() {
@@ -212,7 +216,44 @@ public class MaxHeapListImpl implements MaxHeapI{
 		
 	}
 
+	@Override
+	public void shiftUp() {
+		
+		int size = heap.size() - 1;
+		
+		while(size>0) {
+			
+			int lastValue = heap.get(size);
+			heap.set(size, heap.get(0));
+			heap.set(0, lastValue);
+			
+			//apply MaxHeapify
+			FakeMaxHeapify(0, size);
+			size--;
+		}
+		
+	}
 
+	@Override
+	public void FakeMaxHeapify(int pos, int length) {
+	
+
+		int value = heap.get(pos);
+		int left =  LeftChildPos(pos); // return left child position
+		int right = RightChildPos(pos);// return right child position
+		int largestPos = pos; // store position with the largest value
+		
+		//System.out.println(left + "" + right+"");
+		if((left < length ) && heap.get(left) > heap.get(pos))
+			largestPos = left;
+		if ((right < length) && heap.get(right) > heap.get(left))
+			largestPos = right;
+		
+		if(heap.get(largestPos) > value) {
+				swap(heap, pos, largestPos);
+				FakeMaxHeapify(largestPos, length);
+		}
+	}
 
 
 

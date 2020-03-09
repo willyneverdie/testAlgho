@@ -45,5 +45,7 @@ public interface MaxHeapI {
 	public int extractmax();
 	public int getMax();
 	public int decreaseKey();
+	public void shiftUp();
+	public void FakeMaxHeapify(int pos, int length);
 	
 }
