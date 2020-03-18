@@ -7,7 +7,7 @@ import com.wh.utilities.Utilities;
 public class BinarySearch {
 
 	
-	public static final int ARRAY_LENGTH = 1_000_000;
+	public static final int ARRAY_LENGTH = 1_000;
 	
 	public static int binarySearch(int[] data , int target, int low, int high) throws InterruptedException{
 		
