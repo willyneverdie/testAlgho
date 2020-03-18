@@ -12,6 +12,7 @@ import java.util.Arrays;
  *         also common to both X and Y , has length 4. The sequence (B;C;B;A) is
  *         an LCS of X and Y, as is the sequence (B;D;A;B), since X and Y have
  *         no common subsequence of length 5 or greater.
+ *        
  */
 public class LCS {
 
