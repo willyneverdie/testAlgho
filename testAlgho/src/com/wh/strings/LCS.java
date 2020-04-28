@@ -24,6 +24,12 @@ public class LCS {
 		this.s2 = s2;
 	}
 
+
+	
+	public int findLCS() {
+		return findLCS(this.s1, this.s2, 0, 0);
+	}
+	
 	/*
 	 * To find all commons subsequences we perform 3 while cycles getting a O(n^3)
 	 * For each position in the first array, you loop through until the end of the second array
@@ -82,6 +88,7 @@ public class LCS {
 		int i = 0;
 		
 		for (char[] ds : B) {
+			System.out.println(ds);
 			C[i] = String.valueOf(ds);
 			i++;
 		
@@ -90,20 +97,47 @@ public class LCS {
 		return C; 
 	}
 
+	
+	/****
+	 * Find longest common subsequence.
+	 * This algorithm is 'in place' because use the input and return an int value.
+	 * Recursion Approach
+	 * 
+	 * Best Case Scenario: O(n); both arrays are the same. n calls!
+	 * Worse Case Scenario: O(2^N); there is not common subsequence and n+m=N
+	 * 
+	 ****/
+	public int findLCS(String s1, String s2, int i, int j) {
+		
+		if(i >= s1.length() || j >= s2.length())
+			return 0;
+		
+		if(s1.charAt(i) ==  s2.charAt(j))
+			return 1 + findLCS(s1, s2, i+1, j+1);
+		else
+			return Math.max(findLCS(s1, s2, i+1, j), findLCS(s1, s2, i, j+1)) ;
+		
+	}
+	
 	public static void main(String[] args) {
 
 		// String s1 = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
 		// String s2 = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
-		String s1 = "ACCGGTCGAGTGCGCGG";
-		String s2 = "GTCGTTCGGAATGCCGT";
-		LCS lcs = new LCS(s1, s2);
-		String D[] = lcs.findAllCS();
+		//String s1 = "ACCGGTCGAGTGCGCGG";
+		//String s2 = "GTCGTTCGGAATGCCGT";
+		String s1 = "ACCGGTXQWL";
+		String s2 = "GTCGTQL";
 		
-		for (String string : D) {
-			if(string != null || string != "")
+		LCS lcs = new LCS(s1, s2);
+		//String D[] = lcs.findAllCS();
+		
+		/*for (String string : D) {
+			//if(string != null || string != "")
 				System.out.println(string);
-		}
-			
+		}*/
+		
+		
+		System.out.println("The longest common subsecuence is:"+lcs.findLCS());
 
 	}
 
