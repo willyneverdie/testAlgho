@@ -119,14 +119,50 @@ public class LCS {
 		
 	}
 	
+	/*
+	 * @conditions: s1 is the shortest array 
+	 */
+	
+	public int[][] DynamicFindLCS(String s1, String s2) {
+		
+		int table[][] = new int[s1.length() + 1 ][s2.length() + 1];
+		
+		//first row and column filled with 0s
+		/*for (int i = 0; i < table.length; i++) {
+			table[i][0] = 0;
+		}
+		
+		for (int j = 0; j < table.length; j++) {
+			table[0][j] = 0;
+		}
+		*/
+		
+		for (int i = 1; i < s1.length() + 1; i++) {
+			for (int j = 1; j < s2.length() + 1; j++) {
+				
+				if (s1.charAt(i-1) == s2.charAt(j-1))
+					table[i][j] = table[i-1][j-1] + table[i][j] +  1; // sum 1 + diagonal value + actual value
+				else
+					table[i][j] = Math.max(table[i][j-1] , table[i-1][j] );
+			}
+		}
+		
+		return table;
+		
+		
+	}
+	
 	public static void main(String[] args) {
 
 		// String s1 = "ACCGGTCGAGTGCGCGGAAGCCGGCCGAA";
 		// String s2 = "GTCGTTCGGAATGCCGTTGCTCTGTAAA";
 		//String s1 = "ACCGGTCGAGTGCGCGG";
 		//String s2 = "GTCGTTCGGAATGCCGT";
-		String s1 = "ACCGGTXQWL";
-		String s2 = "GTCGTQL";
+		//String s1 = "ACCGGTXQWL";
+		//String s2 = "GTCGTQL";
+		
+		String s1 = "ABCD";
+		String s2 = "BXXD";
 		
 		LCS lcs = new LCS(s1, s2);
 		//String D[] = lcs.findAllCS();
@@ -136,6 +172,15 @@ public class LCS {
 				System.out.println(string);
 		}*/
 		
+		int c[][] = lcs.DynamicFindLCS(s1, s2);
+		
+		
+		for (int i = 0; i < s1.length()+1; i++) {
+			for (int j = 0; j < s2.length()+1; j++) {
+				System.out.print(c[i][j]);
+			}
+			System.out.println();
+		}
 		
 		System.out.println("The longest common subsecuence is:"+lcs.findLCS());
 
