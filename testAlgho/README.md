@@ -17,7 +17,7 @@ In general, the size of the problem is called 'n'.
 <h2>Algho 1</h2>
 <span>Let's say you have to display 100 numbers on the screen. The numbers are 0 to 99. A good approach would be use a 'for loop'!</span>
 
-<span>For instance: <b>for</b>( i=0 ; i<100 ; i++ )<b>System.out.println</b>(i);</span>
+<ul><li><span>For instance: <b>for</b>( i=0 ; i<100 ; i++ )<b>System.out.println</b>(i);</span></li></lu>
 
 We are using a 'for loop
 
