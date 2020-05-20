@@ -1,6 +1,6 @@
 <H1>Welcome to testAlgho</H1>
   
-<span>In this repository we use RAM model to try to analize algorithms.</span>
+<span>In this repository we use word model to analize algorithms.</span>
 
 <span>The RAM model considers:</span>
 
