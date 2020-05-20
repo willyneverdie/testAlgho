@@ -19,7 +19,7 @@ Let's say you have to display 100 numbers on the screen. The numbers are 0 to 99
 For instance:
 
   <b>for</b>( i=0; i<100 ; i++ )
-    System.out.println(i);
+    <b>System.out.println</b>(i);
 
 We are using a 'for loop
 
