@@ -18,7 +18,7 @@ In general, the size of the problem is called 'n'.
 Let's say you have to display 100 numbers on the screen. The numbers are 0 to 99. A good approach would be use a 'for loop'!
 For instance:
 
-  for( i=0; i<100 ;i++)
+  <b>for</b>( i=0; i<100 ; i++ )
     System.out.println(i);
 
 We are using a 'for loop
